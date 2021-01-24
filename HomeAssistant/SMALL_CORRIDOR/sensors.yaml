@@ -1,0 +1,12 @@
+  - platform: mqtt
+    name: "small_corridor_ceiling_light_brightness"
+    state_topic: "Small_corridor/state/brightness"
+
+  - platform: mqtt
+    name: "small_corridor_ceiling_light_rssi"
+    state_topic: "Small_corridor/state/rssi"
+
+  - platform: mqtt
+    name: "small_corridor_ceiling_light_pir"
+    state_topic: "Small_corridor/state/pir"
+

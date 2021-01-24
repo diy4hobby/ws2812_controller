@@ -1,0 +1,31 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+lovelace:
+  mode: yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Контроль системы
+sensor system:
+  - platform: systemmonitor
+    resources:
+      - type: load_15m
+      - type: processor_temperature
+
+# Управление освещением КУХНИ
+switch kitchen: !include KITCHEN/switches.yaml
+sensor kitchen: !include KITCHEN/sensors.yaml
+# Управление освещением МАЛЕНЬКОГО КОРИДОРА
+switch small_corridor: !include SMALL_CORRIDOR/switches.yaml
+sensor small_corridor: !include SMALL_CORRIDOR/sensors.yaml
+input_boolean: !include SMALL_CORRIDOR/input_booleans.yaml
+automation small_corridor: !include SMALL_CORRIDOR/automations.yaml

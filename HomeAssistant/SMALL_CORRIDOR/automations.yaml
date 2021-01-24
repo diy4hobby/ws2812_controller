@@ -1,0 +1,45 @@
+- alias: Включить свет в маленьком коридоре по движению
+  trigger:
+    platform: state
+    entity_id: sensor.small_corridor_ceiling_light_pir
+    to: '1'
+  condition:
+    condition: state
+    entity_id: switch.small_corridor_night_mode
+    state: 'on'
+  action:
+    service: switch.turn_on
+    entity_id:
+      - switch.small_corridor_ceiling_light_20
+      - switch.kitchen_ceiling_light_20
+
+- alias: Выключить свет в маленьком коридоре по движению
+  trigger:
+    platform: state
+    entity_id: sensor.small_corridor_ceiling_light_pir
+    to: '0'
+  action:
+    service: switch.turn_off
+    entity_id:
+      - switch.small_corridor_ceiling_light_20
+      - switch.kitchen_ceiling_light_20
+
+
+
+- alias: Включить ночной режим
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-01:00:00"
+  action:
+    service: switch.turn_on
+    entity_id: switch.small_corridor_night_mode
+
+- alias: Выключить ночной режим
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "+01:00:00"
+  action:
+    service: switch.turn_off
+    entity_id: switch.small_corridor_night_mode

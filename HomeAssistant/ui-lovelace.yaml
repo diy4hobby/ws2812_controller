@@ -1,0 +1,197 @@
+title: Home Assistant
+resources:
+  - url: /hacsfiles/weather-card/weather-card.js
+    type: js
+  - url: /hacsfiles/button-card/button-card.js
+    type: js
+  - url: /hacsfiles/lovelace-gap-card/gap-card.js
+    type: js
+  - url: /hacsfiles/bar-card/bar-card.js
+    type: module
+
+
+views:
+  # Основная панель - на  ней расположены погода, элементы управления освещением
+  - path: default_view
+    title: Главная
+    panel: true
+    badges:
+      - entity: binary_sensor.updater
+      - entity: person.aleksei
+      - entity: sun.sun
+    cards:
+    
+    # Горизонтальный стек - карточки расположены слева направо, первая - погода
+      - type: horizontal-stack
+        cards:
+          
+          # Карточка с прогнозом погоды
+          - type: 'custom:weather-card'
+            entity: weather.home_assistant
+            number_of_forecasts: '5'
+            hourly_forecast: false
+
+          # Вертикальный стек для элементов управления КУХНИ
+          - type: vertical-stack
+            cards:
+
+              # Заголовок "КУХНЯ"
+              - type: 'custom:button-card'
+                color_type: label-card
+                color: 'rgb(44, 109, 214)'
+                name: КУХНЯ
+              - type: 'custom:bar-card'
+                entity: sensor.kitchen_ceiling_light_brightness
+                min: 0
+                max: 255
+                height: 10
+                positions:
+                  icon: OFF
+                  name: OFF
+                  indicator: OFF
+
+              # Индикация и кнопки управления яркостью освещения на кухне
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    entity: sensor.kitchen_ceiling_light_pir
+                    icon: 'mdi:motion-sensor'
+                    size: 20%
+                    show_name: false
+                    state:
+                      - value: 0
+                        color: rgb(100, 100, 100)
+                      - value: 1
+                        color: rgb(189, 255, 5)
+                  - type: 'custom:button-card'
+                    name: 20%
+                    entity: switch.kitchen_ceiling_light_20
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: "[[[ if (entity.state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline'; ]]]"
+                  - type: 'custom:button-card'
+                    name: 50%
+                    entity: switch.kitchen_ceiling_light_50
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: "[[[ if (entity.state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline'; ]]]"
+                  - type: 'custom:button-card'
+                    name: 80%
+                    entity: switch.kitchen_ceiling_light_80
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: "[[[ if (entity.state == 'on') return 'mdi:lightbulb-on-outline'; else return 'mdi:lightbulb-outline'; ]]]"
+              # Кнопки управления эффектом освещения на кухне
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    name: 12
+                    entity: switch.kitchen_ceiling_effect_12
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-1-box-outline'
+                  - type: 'custom:button-card'
+                    name: 22
+                    entity: switch.kitchen_ceiling_effect_22
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-2-box-outline'
+                  - type: 'custom:button-card'
+                    name: 31
+                    entity: switch.kitchen_ceiling_effect_31
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-3-box-outline'
+                  - type: 'custom:button-card'
+                    name: 42
+                    entity: switch.kitchen_ceiling_effect_42
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-4-box-outline'
+                  - type: 'custom:button-card'
+                    name: 57
+                    entity: switch.kitchen_ceiling_effect_57
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-5-box-outline'
+              
+              - type: 'custom:gap-card'
+
+              # Заголовок "МАЛЕНЬКИЙ КОРИДОР"
+              - type: 'custom:button-card'
+                color_type: label-card
+                color: 'rgb(44, 109, 214)'
+                name: МАЛЕНЬКИЙ КОРИДОР
+              - type: 'custom:bar-card'
+                entity: sensor.small_corridor_ceiling_light_brightness
+                min: 0
+                max: 255
+                height: 10
+                positions:
+                  icon: OFF
+                  name: OFF
+                  indicator: OFF
+
+              # Индикация и кнопки управления яркостью освещения в маленьком корридоре
+              - type: horizontal-stack
+                cards:
+                  - type: 'custom:button-card'
+                    entity: sensor.small_corridor_ceiling_light_pir
+                    icon: 'mdi:motion-sensor'
+                    size: 20%
+                    show_name: false
+                    state:
+                      - value: 0
+                        color: rgb(100, 100, 100)
+                      - value: 1
+                        color: rgb(189, 255, 5)
+                  #- type: 'custom:gap-card'
+                  #- type: 'custom:gap-card'
+                  - type: 'custom:button-card'
+                    name: Ночной режим
+                    entity: switch.small_corridor_night_mode
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:weather-night'
+                  - type: 'custom:button-card'
+                    name: 12
+                    entity: switch.small_corridor_ceiling_effect_12
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-1-box-outline'
+                  - type: 'custom:button-card'
+                    name: 31
+                    entity: switch.small_corridor_ceiling_effect_31
+                    color_type: card
+                    color: 'rgb(66, 134, 244)'
+                    icon: 'mdi:numeric-2-box-outline'
+
+
+  - title: Статистика
+    path: ''
+    badges: []
+    cards:
+      - type: sensor
+        entity: sensor.keenetic_gateway_b_received
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.keenetic_gateway_b_sent
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.kitchen_ceiling_light_rssi
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.small_corridor_ceiling_light_rssi
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.load_15m
+        graph: line
+        detail: 2
+      - type: sensor
+        entity: sensor.processor_temperature
+        graph: line
+        detail: 2

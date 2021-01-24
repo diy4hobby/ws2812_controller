@@ -1,0 +1,12 @@
+  - platform: mqtt
+    name: "kitchen_ceiling_light_brightness"
+    state_topic: "Kitchen/state/brightness"
+
+  - platform: mqtt
+    name: "kitchen_ceiling_light_rssi"
+    state_topic: "Kitchen/state/rssi"
+
+  - platform: mqtt
+    name: "kitchen_ceiling_light_pir"
+    state_topic: "Kitchen/state/pir"
+

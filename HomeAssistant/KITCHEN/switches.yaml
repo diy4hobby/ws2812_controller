@@ -1,0 +1,104 @@
+  - platform: mqtt
+    name: "kitchen_ceiling_light_80"
+    state_topic: "Kitchen/state/brightness"
+    command_topic: "Kitchen/ctrl/brightness"
+    payload_on: 204
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int >= 204 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_light_50"
+    state_topic: "Kitchen/state/brightness"
+    command_topic: "Kitchen/ctrl/brightness"
+    payload_on: 127
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int >= 127 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_light_20"
+    state_topic: "Kitchen/state/brightness"
+    command_topic: "Kitchen/ctrl/brightness"
+    payload_on: 51
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int >= 51 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_effect_12"
+    state_topic: "Kitchen/state/effect"
+    command_topic: "Kitchen/ctrl/effect"
+    payload_on: 12
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int == 12 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_effect_22"
+    state_topic: "Kitchen/state/effect"
+    command_topic: "Kitchen/ctrl/effect"
+    payload_on: 22
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int == 22 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+
+  - platform: mqtt
+    name: "kitchen_ceiling_effect_31"
+    state_topic: "Kitchen/state/effect"
+    command_topic: "Kitchen/ctrl/effect"
+    payload_on: 31
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int == 31 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_effect_42"
+    state_topic: "Kitchen/state/effect"
+    command_topic: "Kitchen/ctrl/effect"
+    payload_on: 42
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int == 42 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "kitchen_ceiling_effect_57"
+    state_topic: "Kitchen/state/effect"
+    command_topic: "Kitchen/ctrl/effect"
+    payload_on: 57
+    payload_off: 0
+    value_template: "{{ 'ON' if value|int == 57 else 'OFF' }}"
+    state_on: "ON"
+    state_off: "OFF"
+    qos: 0
+    optimistic: false
+    retain: true
