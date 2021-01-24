@@ -1,4 +1,4 @@
-# esp8266_ws2812
+# WS2812 Controller
 WS2812 LED strip controller
 
 Easy to repeat project (hardware + arduino project + HomeAssistant configuration examples) to control WS2812 LED strip via WIFI, MQTT protocol. NodeMCU (ESP8266) was used as a control module.
